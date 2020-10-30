@@ -1,0 +1,89 @@
+﻿@model IEnumerable<InsuranceProject.Models.Client>
+@{
+    ViewBag.Title = "Clients";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<html>
+    <body>
+        <div class="User-home-container">
+            <h2>Clients</h2>
+
+            <div class="User-home-content">
+
+                <div class="User-home-left">
+                    <div class="User-home-left-row">
+                        <h4>
+                            Control Panel
+                        </h4>
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("View all clients", "Clients", "Admin")
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("View all claims", "Claims", "Admin")
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("View all Mail", "Messages", "Admin")
+                    </div>
+
+                </div>
+
+                <div class="User-home-right">
+                    <div class="search-container">
+                        @using (Html.BeginForm("FindClients", "Admin", FormMethod.Get))
+                        {
+                            @Html.TextBox("clientid")
+                            <input type="submit" value="Search" />
+                        }
+                        @if (TempData["Message"] != null)
+                        {
+                            <div>
+                                <label>@TempData["Message"]</label>
+                            </div>
+                        }
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <th>
+                                <label>First name</label>
+                            </th>
+                            <th>
+                                <label>Last name</label>
+                            </th>
+                            <th>
+                                <label>Username</label>
+                            </th>
+                            <th>
+                                <label>Password</label>
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FirstName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LastName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Password)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
+        </div>
+    </body>
+</html>

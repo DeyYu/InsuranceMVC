@@ -1,0 +1,118 @@
+﻿@model InsuranceProject.ViewModel.ContactModel
+<html>
+    <body>
+        <div class="Contact-main-content">
+            <h1 class="Contact-Title">Contact Us</h1>
+            <hr class="Contact-line" />
+            <h4 class="Contact-text">We would love to hear from you!</h4>
+            <div class="Contact-container">
+                <div class="Contact-container-left">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="form-control">First Name</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.First_Name, new { htmlAttributes = new { @class = "type-text" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.First_Name, "", new { @class = "Contact-valid" })
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-control">Last Name</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Last_Name, new { htmlAttributes = new { @class = "type-text" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Last_Name, "", new { @class = "Contact-valid" })
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-control">Phone Number</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Phone_Number, new { htmlAttributes = new { @class = "type-text" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Phone_Number, "", new { @class = "Contact-valid" })
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-control">Email Address</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Email_Address, new { htmlAttributes = new { @class = "type-text" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Email_Address, "", new { @class = "Contact-valid" })
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-control">Your Message</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "type-text" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "Contact-valid" })
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Send Message" class="Contact-send" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="Contact-container-right">
+                    <div class="Contact-right-info">
+                        <div>
+                            <h5>ADDRESS</h5>
+                            <p>BB Insurance Ltd.</p>
+                            <p>215 Queen Street</p>
+                            <p>Auckland</p>
+                            <p>New Zealand</p>
+                        </div>
+                    </div>
+                    <div class="Contact-right-info">
+                        <h5>TELEPHONE</h5>
+                        <p>(09)578-5194</p>
+                    </div>
+                    <div class="Contact-right-info">
+                        <h5>EMAIL</h5>
+                        <p>Getinsured@bbinsurance.co.nz</p>
+                    </div>
+                    <hr class="Contact-social-line" />
+                    <ul class="Contact-social">
+                        <li>
+                            <img src="~/Images/Facebook-White-Icon.png" />
+                        </li>
+                        <li>
+                            <img src="~/Images/linkedin-3-xxl.png" />
+                        </li>
+                        <li>
+                            <img src="~/Images/google-plus-icon-white.png" />
+                        </li>
+                        <li>
+                            <img src="~/Images/Instagram-white-icon.png" />
+                        </li>
+                        <li>
+                            <img src="~/Images/twitter-xxl.png" />
+                        </li>
+                    </ul>
+                    <h5 class="Contact-text">BB Insurance</h5>
+                </div>
+            </div>
+        </div>
+
+
+        @if (ViewBag.msg != null)
+        {
+
+            <div class="alert-danger">@ViewBag.msg</div>
+        }
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    </body>
+</html>

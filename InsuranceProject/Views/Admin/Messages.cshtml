@@ -1,0 +1,81 @@
+﻿@model IEnumerable<InsuranceProject.Models.Contact>
+@{
+    ViewBag.Title = "Messages";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+<html>
+    <body>
+        <div class="User-home-container">
+            <h2>Mail</h2>
+
+            <div class="User-home-content">
+
+                <div class="User-home-left">
+                    <div class="User-home-left-row">
+                        <h4>
+                            Control Panel
+                        </h4>
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("View all clients", "Clients", "Admin")
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("View all claims", "Claims", "Admin")
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("View all Mail", "Messages", "Admin")
+                    </div>
+                </div>
+
+                <div class="User-home-right">
+                    <div class="search-container">
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.First_Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Last_Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Phone_Number)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Email_Address)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Message)
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.First_Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Last_Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Phone_Number)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email_Address)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Message)
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                    <p>
+                        @Html.ActionLink("Return to admin homepage", "AdminHome", "Admin")
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

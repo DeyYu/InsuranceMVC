@@ -1,0 +1,62 @@
+﻿@model InsuranceProject.Models.Client
+@{
+    ViewBag.Title = "FindClients";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<html>
+    <body>
+        <div class="User-home-container">
+            <h2>Search Clients</h2>
+
+            <div class="User-home-content">
+
+                <div class="User-home-left">
+                    <div class="User-home-left-row">
+                        <h4>
+                            Control Panel
+                        </h4>
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("View all clients", "Clients", "Admin")
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("View all claims", "Claims", "Admin")
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("View all Mail", "Messages", "Admin")
+                    </div>
+
+                </div>
+
+                <div class="User-home-right">
+                    <div class="search-container">
+
+                        <div>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    <label>Client ID:</label> @Html.DisplayFor(model => model.ClientId)
+                                </dt>
+                                <dt>
+                                    <label>First Name:</label> @Html.DisplayFor(model => model.FirstName)
+                                </dt>
+                                <dt>
+                                    <label>Last Name:</label> @Html.DisplayFor(model => model.LastName)
+                                </dt>
+                                <dt>
+                                    <label>Username:</label> @Html.DisplayFor(model => model.UserName)
+                                </dt>
+                                <dt>
+                                    <label>Password:</label> @Html.DisplayFor(model => model.Password)
+                                </dt>
+                            </dl>
+                        </div>
+                        <p>
+                            @Html.ActionLink("Return to all Clients", "Clients", "Admin")
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

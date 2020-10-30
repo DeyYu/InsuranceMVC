@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - BB Insurance</title>
+        @Styles.Render("~/Content/Style.css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+
+    <body>
+        <div class="navbar">
+            <div class="home-icon"><img src="~/Images/bb logo.jpg" /><h1>Insurance</h1></div>
+            <div class="container-left">
+                <ul class="navbar-links">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Services", "Services", "Home")</li>
+                </ul>
+            </div>
+            <div class="container-right">
+                <ul class="navbar-links">
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Logout", "LogOut", "User")</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            @if (Convert.ToInt32(Session["UserID"]) == 5)
+            {
+                @RenderBody()
+            }
+            else
+            {
+                Response.Redirect("~/User/Login");
+            }
+        </div>
+
+        <footer class="footer">
+            <hr />
+            <h5>©2020 BB Insurance New Zealand</h5>
+            <h5><b>TERMS AND CONDITIONS PRIVACY POLICY/YOUR NEW ZEALAND RIGHTS</b></h5>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

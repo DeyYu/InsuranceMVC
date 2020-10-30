@@ -1,0 +1,60 @@
+﻿@model InsuranceProject.ViewModel.ClientModel
+@{
+    ViewBag.Title = "ClientHome";
+    Layout = "~/Views/User/_ClientLayout.cshtml";
+}
+
+<html>
+    <body>
+        <div class="User-home-container">
+            <h2>Hi @Session["FirstName"], Welcome to your Homepage </h2>
+
+            <div class="User-home-content">
+
+                <div class="User-home-left">
+                    <div class="User-home-left-row">
+                        <h4>
+                            Control Panel
+                        </h4>
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("Edit your details", "EditDetails", "User")
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("Insure a vehicle", "RegVehicle", "User")
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("Request a claim", "Claim", "User")
+                    </div>
+                </div>
+
+                <div class="User-home-right">
+                    <h4>Your Details</h4>
+                    <dl class="dl-horizontal">
+                        <dt class="User-home-right-row">
+                            <label>First Name:</label> @Html.DisplayFor(model => model.FirstName)
+                        </dt>
+
+
+                        <dt class="User-home-right-row">
+                            <label>Last Name:</label> @Html.DisplayFor(model => model.LastName)
+                        </dt>
+
+                        <dt class="User-home-right-row">
+                            <label>Username:</label> @Html.DisplayFor(model => model.UserName)
+                        </dt>
+                    </dl>
+                </div>
+            </div>
+
+            <div>
+                @if (TempData["Message"] != null)
+                {
+                    <div>
+                        <button type="button">@TempData["Message"]</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </body>
+</html>

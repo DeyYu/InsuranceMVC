@@ -1,0 +1,47 @@
+﻿@model InsuranceProject.ViewModel.ClientModel
+@{
+    ViewBag.Title = "AdminHome";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+<html>
+    <body>
+        <div class="User-home-container">
+            <h2>Hi @Session["FirstName"], Welcome back admin! </h2>
+
+            <div class="User-home-content">
+
+                <div class="User-home-left">
+                    <div class="User-home-left-row">
+                        <h4>
+                            Control Panel
+                        </h4>
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("View all clients", "Clients", "Admin")
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("View all claims", "Claims", "Admin")
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("View all Mail", "Messages", "Admin")
+                    </div>
+
+                </div>
+
+                <div class="User-home-right">
+                    <dl class="dl-horizontal">
+                    </dl>
+                </div>
+            </div>
+
+            <div>
+                @if (TempData["Message"] != null)
+                {
+                    <div>
+                        <button type="button">@TempData["Message"]</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </body>
+</html>

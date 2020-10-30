@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "RegVehicle";
+    Layout = "~/Views/User/_ClientLayout.cshtml";
+}
+<html>
+    <body>
+        <div class="User-home-container">
+            <h2>Register a vehicle</h2>
+            <div class="Reg-vehicle-container">
+                <div class="Reg-vehicle">
+                    <div>
+                        <img src="~/Images/car-4-xxl.png" />
+                    </div>
+                    <div>
+                        @Html.ActionLink("Insure a Car", "RegCar", "User")
+                    </div>
+                    
+                </div>
+                <div class="Reg-vehicle">
+                    <div>
+                        <img src="~/Images/motorcycle-xxl.png" />
+                    </div>
+                    <div>
+                        @Html.ActionLink("Insure a Motorcycle", "RegBike", "User")
+                    </div>
+                </div>
+            </div>
+            <div>
+                @Html.ActionLink("Back to your Homepage", "ClientHome")
+            </div>
+        </div>
+    </body>
+</html>

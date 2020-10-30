@@ -1,0 +1,106 @@
+﻿@model IEnumerable<InsuranceProject.Models.Claim>
+@{
+    ViewBag.Title = "Claims";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<html>
+    <body>
+        <div class="User-home-container">
+            <h2>Claims</h2>
+
+            <div class="User-home-content">
+
+                <div class="User-home-left">
+                    <div class="User-home-left-row">
+                        <h4>
+                            Control Panel
+                        </h4>
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("View all clients", "Clients", "Admin")
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("View all claims", "Claims", "Admin")
+                    </div>
+                    <div class="User-home-left-row">
+                        @Html.ActionLink("View all Mail", "Messages", "Admin")
+                    </div>
+
+                </div>
+
+                <div class="User-home-right">
+                    <div class="search-container">
+                        @using (Html.BeginForm("FindClaims", "Admin", FormMethod.Get))
+                        {
+                            @Html.TextBox("claimid")
+                            <input type="submit" value="Search" />
+                        }
+                        @if (TempData["Message"] != null)
+                        {
+                            <div>
+                                <label>@TempData["Message"]</label>
+                            </div>
+                        }
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ClaimId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nature)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Location)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Date)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.LicensePlate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Client.FirstName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Client)
+                            </th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ClaimId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nature)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Location)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LicensePlate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Client.FirstName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ClientId)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
+        </div>
+
+    </body>
+</html>

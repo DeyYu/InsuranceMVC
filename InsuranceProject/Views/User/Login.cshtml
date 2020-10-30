@@ -1,0 +1,61 @@
+﻿@model InsuranceProject.ViewModel.ClientModel
+@{
+    ViewBag.Title = "Login";
+}
+<html>
+    <body>
+        <div class="login-container">
+            <h2 class="login-label">Login</h2>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label class="login-label">Username</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "login-text" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label class="login-label">Password</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "login-text" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Login" class="login-btn" />
+                        </div>
+                    </div>
+                </div>
+            }
+            <div>
+                @if (ViewBag.msg != null)
+                {
+                    <div class="alert-danger">@ViewBag.msg</div>
+                }
+            </div>
+
+            <div>
+                @if (TempData["Message"] != null)
+                {
+                    <div>
+                        <button type="button">@TempData["Message"]</button>
+                    </div>
+                }
+            </div>
+
+            <div>
+                @Html.ActionLink("Not Registered?", "Registration", "User")
+            </div>
+        </div>
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    </body>
+</html>
